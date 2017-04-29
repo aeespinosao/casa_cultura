@@ -48,7 +48,7 @@
                             <td><?php echo $dato->fecha_limite; ?></td>
                             <td><?php echo $dato->entidad; ?></td>
                             <td><?php echo $dato->nombres.' '.$dato->apellidos; ?></td>
-                            <td><a  class="btn btn-success" style="height:20px; width:20px; padding:0px;"name="buscar" href="<?php echo base_url();?>index.php/cursos/buscar_cursos/<?php echo $dato->codigo; ?>"><span class="glyphicon glyphicon-user"></span> </a></td>
+                            <td><a  class="btn btn-success" style="height:20px; width:20px; padding:0px;"name="buscar" href="<?php echo base_url();?>index.php/cursos/buscar_cursos/<?php echo $dato->codigo; ?>"><span class="glyphicon glyphicon-book"></span> </a></td>
                           </tr>
                       <?php } ?>
                       </tbody>
