@@ -8,7 +8,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Editar cursos</h2>
+                    <h2>Inscripciones a cursos</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -48,7 +48,7 @@
                             <td><?php echo $dato->fecha_limite; ?></td>
                             <td><?php echo $dato->entidad; ?></td>
                             <td><?php echo $dato->nombres.' '.$dato->apellidos; ?></td>
-                            <td><a  class="btn btn-primary" style="height:20px; width:20px; padding:0px;"name="editar" href="<?php echo base_url();?>index.php/cursos/editar_curso/<?php echo $dato->codigo; ?>"><span class="glyphicon glyphicon-pencil"></span> </a></td>
+                            <td><a  class="btn btn-success" style="height:20px; width:20px; padding:0px;"name="editar" href="<?php echo base_url();?>index.php/matriculas/inscribir_usuarios/<?php echo $dato->codigo; ?>"><span class="glyphicon glyphicon-cloud-upload"></span> </a></td>
                           </tr>
                       <?php } ?>
                       </tbody>

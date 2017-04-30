@@ -44,6 +44,13 @@
                       <li><a href="<?php echo base_url();?>index.php/cursos/buscar">Buscar</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-university"></i>    <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo base_url();?>index.php/matriculas/inscribir">Inscribir</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/matriculas/cancelar">Cancelar inscripción</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/matriculas/asistencia">Asistencia</a></li>
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-table"></i> Exportar <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url();?>index.php/exportar/crear">Usuarios</a></li>

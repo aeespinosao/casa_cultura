@@ -39,3 +39,27 @@ CREATE TABLE `curso` (
   CONSTRAINT `curso_pk` PRIMARY KEY (`codigo`),
   CONSTRAINT `encargado_fk` FOREIGN KEY (`doc_encargado`) REFERENCES `usuario` (`numero_documento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `matricula` (
+  `codigo` int(5) NOT NULL,
+  `codigo_curso` int(5) NOT NULL,
+  `numero_documento` varchar(20) NOT NULL,
+  `estado` varchar(15) DEFAULT 'Sin terminar',
+  CONSTRAINT `matricula_pk` PRIMARY KEY (`codigo_curso`,`numero_documento`),
+  CONSTRAINT `usuario_fk` FOREIGN KEY (`numero_documento`) REFERENCES `usuario` (`numero_documento`),
+  CONSTRAINT `curso_fk` FOREIGN KEY (`codigo_curso`) REFERENCES `curso` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create index idx_matricula on matricula(codigo);
+
+CREATE TABLE `asistencia` (
+  `codigo_matricula` int(5) NOT NULL,
+  `codigo_curso` int(5) NOT NULL,
+  `numero_documento` varchar(20) NOT NULL,
+  `clase` varchar(10) NOT NULL,
+  `reporte` int(1) NOT NULL DEFAULT 0,
+  CONSTRAINT `asistencia_pk` PRIMARY KEY (`codigo_curso`,`numero_documento`,`codigo_matricula`,`clase`),
+  CONSTRAINT `matricula_fk` FOREIGN KEY (`codigo_matricula`) REFERENCES `matricula` (`codigo`),
+  CONSTRAINT `usuario_fk2` FOREIGN KEY (`numero_documento`) REFERENCES `usuario` (`numero_documento`),
+  CONSTRAINT `curso_fk2` FOREIGN KEY (`codigo_curso`) REFERENCES `curso` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
