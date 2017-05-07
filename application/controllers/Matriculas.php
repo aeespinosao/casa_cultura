@@ -23,6 +23,16 @@ class Matriculas extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function asistencia()
+	{
+		$this->load->model('Curso');
+		$data = array('datos' => $this->Curso->obtener_todos());
+		$this->load->view('templates/header');
+		$this->load->view('templates/menu');
+		$this->load->view('matriculas/asistencia',$data);
+		$this->load->view('templates/footer');
+	}
+
 	public function inscribir_usuarios()
 	{
 		$this->load->model('Usuario');
@@ -43,6 +53,17 @@ class Matriculas extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('templates/menu');
 		$this->load->view('matriculas/cancelar_usuarios',$data);
+		$this->load->view('templates/footer');
+	}
+
+	public function tomar_asistencia(){
+		$this->load->model('Matricula');
+		$curso = $this->uri->segment(3);
+		$this->session->set_flashdata('curso',$this->uri->segment(3));
+		$data = array('datos' => $this->Matricula->obtener_curso_por_codigo($curso),'asistencias' => $this->Matricula->obtener_asistencias($curso));
+		$this->load->view('templates/header');
+		$this->load->view('templates/menu');
+		$this->load->view('matriculas/asistencia_curso',$data);
 		$this->load->view('templates/footer');
 	}
 
@@ -91,5 +112,42 @@ class Matriculas extends CI_Controller {
 			}*/
 		}
 		redirect('matriculas/cancelar');
+	}
+
+	public function guardar_asistencia(){
+		$asistencias = $this->input->post('asistencias[]');
+		$this->load->model('Matricula');
+		foreach ($asistencias as $asistencia) {
+			$asistencia_separada=explode('/',$asistencia);
+			if($this->Matricula->actualizar_asistencia($asistencia_separada[0],$asistencia_separada[1],$asistencia_separada[2])){
+				$this->session->set_flashdata('success', 'Datos actualizados correctamente');
+			}else{
+				$this->session->set_flashdata('danger', 'Hubo un problema al actualizar los datos');
+			}
+		}
+		redirect('matriculas/asistencia');
+	}
+
+	public function cerrar_curso(){
+		$asistencias = $this->input->post('asistencias[]');
+		$this->load->model('Matricula');
+		foreach ($asistencias as $asistencia) {
+			$asistencia_separada=explode('/',$asistencia);
+			if($this->Matricula->actualizar_asistencia($asistencia_separada[0],$asistencia_separada[1],$asistencia_separada[2])){
+				//$this->Matricula->evaluar($asistencia_separada[0],$asistencia_separada[1]);
+				$this->session->set_flashdata('success', 'Datos actualizados correctamente');
+			}else{
+				$this->session->set_flashdata('danger', 'Hubo un problema al actualizar los datos');
+			}
+		}
+		redirect('matriculas/asistencia');
+	}
+
+	public function exportar_matriculados()
+	{
+		$this->load->helper('mysql_to_excel_helper');
+		$this->load->model('Matricula');
+		to_excel($this->Matricula->obtener_todo_exportar(), "Usuarios por curso");
+		//redirect('welcome/index');
 	}
 }

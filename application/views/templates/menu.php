@@ -53,8 +53,9 @@
                   </li>
                   <li><a><i class="fa fa-table"></i> Exportar <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url();?>index.php/exportar/crear">Usuarios</a></li>
-                      <li><a href="<?php echo base_url();?>index.php/exportar/editar">Cursos</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/usuarios/exportar_usuarios">Usuarios</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/cursos/exportar_cursos">Cursos</a></li>
+                      <li><a href="<?php echo base_url();?>index.php/matriculas/exportar_matriculados">Usuarios por curso</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Informes <span class="fa fa-chevron-down"></span></a>

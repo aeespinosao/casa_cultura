@@ -216,9 +216,21 @@ class Cursos extends CI_Controller {
 
 	public function buscar_curso()
 	{
+		$codigo=$this->uri->segment(3);
+		$this->load->model('Curso');
+		$data= array('datos' => $this->Curso->obtener_por_codigo($codigo),
+								 'usuarios' => $this->Curso->obtener_mis_usuarios($codigo));
 		$this->load->view('templates/header');
 		$this->load->view('templates/menu');
-		$this->load->view('cursos/buscar_cursos');
+		$this->load->view('cursos/buscar_curso',$data);
 		$this->load->view('templates/footer');
+	}
+
+	public function exportar_cursos()
+	{
+		$this->load->helper('mysql_to_excel_helper');
+		$this->load->model('Curso');
+		to_excel($this->Curso->obtener_todo_exportar(), "Cursos");
+		//redirect('welcome/index');
 	}
 }

@@ -58,6 +58,34 @@ class Usuario extends CI_Model {
         }
     }
 
+		public function total_usuarios(){
+			 $this->db->select('COUNT(*) as total');
+			 $query=$this->db->get('usuario');
+			 return $query->result();
+		}
+
+		public function hombres_mujeres(){
+			 $this->db->select('genero,COUNT(*) as total');
+			 $this->db->group_by('genero');
+			 $this->db->order_by('genero');
+			 $query=$this->db->get('usuario');
+			 return $query->result();
+		}
+
+		public function menores_edad(){
+			 $this->db->select('COUNT(*) as total');
+			 $this->db->where('edad <',18);
+			 $query=$this->db->get('usuario');
+			 return $query->result();
+		}
+
+		public function tercera_edad(){
+			 $this->db->select('COUNT(*) as total');
+			 $this->db->where('edad >',60);
+			 $query=$this->db->get('usuario');
+			 return $query->result();
+		}
+
   	public function crear_usuario(){
           try{
               $this->db->insert("usuario", array(
@@ -134,6 +162,16 @@ class Usuario extends CI_Model {
         return $query->result();
     }
 
+		public function obtener_mis_cursos($documento){
+			$this->db->from('matricula');
+			$this->db->order_by('matricula.estado');
+			$this->db->where('matricula.numero_documento',$documento);
+      $this->db->select('matricula.estado as estado, curso.nombre as nombre,curso.entidad as entidad ');
+      $this->db->join('curso', 'curso.codigo = matricula.codigo_curso');
+      $query = $this->db->get();
+      return $query->result();
+    }
+
     public function eliminar($documento){
 			try{
         $query = $this->db->delete('usuario', array('numero_documento' => $documento));
@@ -143,53 +181,12 @@ class Usuario extends CI_Model {
 				return false;
 			}
     }
-/*
-    public function get_mis_cursos($jugador){
-        $this->load->database();
-        $this->db->select('codigo_curso');
-        $query = $this->db->get_where('matricula', array(
-            'cedula_jugador' => $jugador->cedula
-        ));
 
-        $mis_cursos = [];
-        foreach($query->result() as $row)
-            $mis_cursos[] = $row->codigo_curso;
-
-        return $mis_cursos;
-    }
-
-    public function get_curso($cod){
-        $this->load->database();
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_horario($cod){
-        $this->load->database();
-        $this->db->select('horario');
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_nivel($cod){
-        $this->load->database();
-        $this->db->select('nivel');
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-		public function delete($cod){
-        $this->load->database();
-        $query = $this->db->delete('curso', array('codigo' => $cod));
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_current_jugador(){
-        $this->load->database();
-        $query = $this->db->get('jugador');
-        $jugadores = $query->result();
-        if(count($jugadores) > 0) return $jugadores[0];
-        return false;
-    }*/
+		public function obtener_todo_exportar()
+		{
+			$this->db->select('*');
+			$query = $this->db->get('usuario');
+			$fields = $query->field_data();
+			return array("fields" => $fields, "query" => $query);
+		}
 } ?>

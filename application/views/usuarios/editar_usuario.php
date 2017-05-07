@@ -134,10 +134,10 @@
                         </label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                           <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" selected>
+                            <label class="btn btn-default <?php if($datos[0]->genero=="masculino"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" selected>
                               <input type="radio" name="genero" id="genero" active> &nbsp; Masculino &nbsp;
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->genero=="femenino"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="genero" id="genero" value="femenino"> Femenino
                             </label>
                           </div>
@@ -202,25 +202,25 @@
                         </label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                           <div id="etnia" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="mestizo"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="etnia" id="etnia" value="mestizo"> Mestizo
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="blanco"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="etnia" id="etnia" value="blanco"> Blanco
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="etnia" id="etnia" value="indígena"> Indígena
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="indigena"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="etnia" id="etnia" value="indigena"> Indígena
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="afrodescendiente"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="etnia" id="etnia" value="afrodescendiente"> Afrodescendiente
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="raizal"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="etnia" id="etnia" value="raizal"> Raizal
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="etnia" id="etnia" value="Gitano"> Gitano
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="gitano"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="etnia" id="etnia" value="gitano"> Gitano
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->etnia=="otro"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="etnia" id="etnia" value="otro"> Otro
                             </label>
                           </div>
@@ -231,25 +231,25 @@
                         </label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                           <div id="discapacidad" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="motriz"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="discapacidad" id="discapacidad" value="motriz"> Motriz
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="mental"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="discapacidad" id="discapacidad" value="mental"> Mental
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="auditiva"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="discapacidad" id="discapacidad" value="auditiva"> Auditiva
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="visual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="discapacidad" id="discapacidad" value="visual"> Visual
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="discapacidad" id="discapacidad" value="Comunicativa"> Comunicativa
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="comunicativa"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="discapacidad" id="discapacidad" value="comunicativa"> Comunicativa
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="discapacidad" id="discapacidad" value="Multiples"> Multiples
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="multiples"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="discapacidad" id="discapacidad" value="multiples"> Multiples
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->discapacidad=="otra"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="discapacidad" id="discapacidad" value="otra"> Otra
                             </label>
                           </div>
@@ -261,25 +261,25 @@
                         </label>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                           <div id="diversidad" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="heterosexual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="heterosexual"> Heterosexual
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="lesviana"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="lesviana"> Lesviana
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="gay"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="gay"> Gay
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="transexual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="transexual"> Transexual
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="bisexual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="bisexual"> Bisexual
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="intersexual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="intersexual"> Intersexual
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="otro"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="otro"> Otro
                             </label>
                           </div>

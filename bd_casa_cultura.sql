@@ -32,7 +32,7 @@ CREATE TABLE `curso` (
   `horas` int(3) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_final` date NOT NULL,
-  `fecha_limite` date NOT NULL
+  `fecha_limite` date NOT NULL,
   `entidad` varchar(50) NOT NULL,
   `doc_encargado` varchar(20) NOT NULL,
   `estado` varchar(10) DEFAULT 'Activo',

@@ -88,6 +88,46 @@ class Matricula extends CI_Model {
 				return $query->result();
 		}
 
+		public function obtener_curso_por_codigo($codigo_curso){
+			$this->db->select('*');
+      $this->db->from('matricula');
+      $this->db->join('curso', 'curso.codigo = matricula.codigo_curso');
+			$this->db->where(array('codigo_curso' => $codigo_curso));
+      $query = $this->db->get();
+      return $query->result();
+    }
+
+		public function obtener_asistencias($codigo_curso){
+			$query = $this->db->get_where('asistencia', array(
+						'codigo_curso' => $codigo_curso,
+						'reporte' => 1
+					));
+			return $query->result();
+		}
+
+		public function obtener_asistentes($codigo_curso){
+			$query = $this->db->get_where('asistencia', array(
+						'codigo_curso' => $codigo_curso,
+						'reporte' => 1
+					));
+			return $query->result();
+		}
+
+		public function actualizar_asistencia($numero_documento,$codigo_curso,$clase){
+			try{
+				$this->db->set(array(
+								'reporte' => 1
+							));
+					$this->db->where(array('codigo_curso' => $codigo_curso,
+					 											'numero_documento' => $numero_documento,
+																'clase' => $clase));
+					$this->db->update('asistencia');
+			}catch (Exception $e){
+					return false;
+			}
+			return true;
+		}
+
     public function obtener_por_codigo($codigo_curso){
 			$this->db->select('*');
       $this->db->from('matricula');
@@ -102,53 +142,24 @@ class Matricula extends CI_Model {
         $query = $this->db->get_where('curso', array('codigo' => $codigo));
         return $query->result();
     }
-/*
-    public function get_mis_cursos($jugador){
-        $this->load->database();
-        $this->db->select('codigo_curso');
-        $query = $this->db->get_where('matricula', array(
-            'cedula_jugador' => $jugador->cedula
-        ));
 
-        $mis_cursos = [];
-        foreach($query->result() as $row)
-            $mis_cursos[] = $row->codigo_curso;
+		public function contar_inscritos($codigo){
+			$this->db->select('COUNT(*) as total');
+			$query = $this->db->get_where('asistencia',array('codigo_curso'=> $codigo));
+			//echo var_dump($query);
+			return $query->result();
+		}
 
-        return $mis_cursos;
-    }
+		public function obtener_todo_exportar()
+		{
 
-    public function get_curso($cod){
-        $this->load->database();
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_horario($cod){
-        $this->load->database();
-        $this->db->select('horario');
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_nivel($cod){
-        $this->load->database();
-        $this->db->select('nivel');
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-		public function delete($cod){
-        $this->load->database();
-        $query = $this->db->delete('curso', array('codigo' => $cod));
-        $query = $this->db->get_where('curso', array('codigo' => $cod));
-        return $query->result();
-    }
-
-    public function get_current_jugador(){
-        $this->load->database();
-        $query = $this->db->get('jugador');
-        $jugadores = $query->result();
-        if(count($jugadores) > 0) return $jugadores[0];
-        return false;
-    }*/
+			$this->db->select('curso.nombre as Nombre_curso,curso.estado as Estado_curso,usuario.numero_documento as Documento,
+												usuario.nombres as Nombre,usuario.apellidos as Apellidos,matricula.estado as Estado');
+      $this->db->from('matricula');
+      $this->db->join('usuario', 'usuario.numero_documento = matricula.numero_documento');
+			$this->db->join('curso', 'curso.codigo = matricula.codigo_curso');
+      $query = $this->db->get();
+			$fields = $query->field_data();
+			return array("fields" => $fields, "query" => $query);
+		}
 } ?>

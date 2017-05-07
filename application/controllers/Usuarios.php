@@ -79,6 +79,11 @@ class Usuarios extends CI_Controller {
 		 $apellidos=$this->input->post('apellidos');
 		 $municipio=$this->input->post('municipio');
 		 $fecha_nacimiento=$this->input->post('fecha_nacimiento');
+		 if(empty($fecha_nacimiento)){
+			 $fecha_nacimiento=NULL;
+		 }else{
+			 $fecha_nacimiento=date("Y-m-d",strtotime($fecha_nacimiento));
+		 }
 		 $comuna=$this->input->post('comuna');
 		 $barrio=$this->input->post('barrio');
 		 $edad=$this->input->post('edad');
@@ -226,7 +231,6 @@ class Usuarios extends CI_Controller {
 			}
 			//echo var_dump($this->session->flashdata('documento'));
 			$data = array('datos' => $datos);
-			//echo var_dump($data);
 			$this->load->view('templates/header');
 			$this->load->view('templates/menu');
 			$this->load->view('usuarios/editar_usuario',$data);
@@ -235,6 +239,7 @@ class Usuarios extends CI_Controller {
 		}
 		else{
 			$datos = $this->leer_datos();
+			echo var_dump($datos);
 			$this->load->model('Usuario');
 			$usuario = new usuario($datos);
 			if($usuario->actualizar()){
@@ -262,9 +267,21 @@ class Usuarios extends CI_Controller {
 
 	public function buscar_usuario()
 	{
+		$documento=$this->uri->segment(3);
+		$this->load->model('Usuario');
+		$data= array('datos' => $this->Usuario->obtener_por_documento($documento),
+								 'cursos' => $this->Usuario->obtener_mis_cursos($documento));
 		$this->load->view('templates/header');
 		$this->load->view('templates/menu');
-		$this->load->view('usuarios/buscar_usuarios');
+		$this->load->view('usuarios/buscar_usuario',$data);
 		$this->load->view('templates/footer');
+	}
+
+	public function exportar_usuarios()
+	{
+		$this->load->helper('mysql_to_excel_helper');
+		$this->load->model('Usuario');
+		to_excel($this->Usuario->obtener_todo_exportar(), "Usuarios");
+		//redirect('welcome/index');
 	}
 }
