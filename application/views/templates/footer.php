@@ -138,7 +138,7 @@
     <script src="<?php echo base_url();?>design/vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url();?>design/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
-    <script src="<?php echo base_url();?>design/build/js/custom.min.js"></script>
+    <script src="<?php echo base_url();?>design/build/js/custom.js"></script>
 
     <!-- Datatables -->
     <script src="<?php echo base_url();?>design/vendors/datatables.net/js/jquery.dataTables.min.js"></script>

@@ -44,7 +44,7 @@
                       <li><a href="<?php echo base_url();?>index.php/cursos/buscar">Buscar</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-university"></i>    <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-university"></i>  Inscripciones  <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url();?>index.php/matriculas/inscribir">Inscribir</a></li>
                       <li><a href="<?php echo base_url();?>index.php/matriculas/cancelar">Cancelar inscripción</a></li>
@@ -56,15 +56,6 @@
                       <li><a href="<?php echo base_url();?>index.php/usuarios/exportar_usuarios">Usuarios</a></li>
                       <li><a href="<?php echo base_url();?>index.php/cursos/exportar_cursos">Cursos</a></li>
                       <li><a href="<?php echo base_url();?>index.php/matriculas/exportar_matriculados">Usuarios por curso</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Informes <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -84,7 +75,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -106,7 +97,7 @@
                     <img src="<?php echo base_url();?>images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <!--<ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Profile</a></li>
                     <li>
                       <a href="javascript:;">
@@ -116,7 +107,7 @@
                     </li>
                     <li><a href="javascript:;">Help</a></li>
                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
+                  </ul>-->
                 </li>
               </ul>
             </nav>

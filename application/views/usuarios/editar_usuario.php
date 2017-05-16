@@ -264,8 +264,8 @@
                             <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="heterosexual"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="heterosexual"> Heterosexual
                             </label>
-                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="lesviana"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="diversidad" id="diversidad" value="lesviana"> Lesviana
+                            <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="lesbiana"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="diversidad" id="diversidad" value="lesbiana"> Lesbiana
                             </label>
                             <label class="btn btn-default <?php if($datos[0]->diversidad_sexual=="gay"){echo "active";}?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                               <input type="radio" name="diversidad" id="diversidad" value="gay"> Gay

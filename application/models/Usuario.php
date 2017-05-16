@@ -172,6 +172,7 @@ class Usuario extends CI_Model {
       return $query->result();
     }
 
+
     public function eliminar($documento){
 			try{
         $query = $this->db->delete('usuario', array('numero_documento' => $documento));
@@ -189,4 +190,35 @@ class Usuario extends CI_Model {
 			$fields = $query->field_data();
 			return array("fields" => $fields, "query" => $query);
 		}
+
+			public function obtener_por_diversidad_sexual()
+			{
+				$this->db->select('diversidad_sexual,COUNT(*) as total');
+				$this->db->group_by('diversidad_sexual');
+				$this->db->order_by('diversidad_sexual');
+ 			  $query=$this->db->get('usuario');
+ 			  return $query->result();
+
+			}
+
+			public function obtener_por_etnia()
+			{
+				$this->db->select('etnia,COUNT(*) as total');
+				$this->db->group_by('etnia');
+				$this->db->order_by('etnia');
+ 			  $query=$this->db->get('usuario');
+ 			  return $query->result();
+
+			}
+
+			public function obtener_por_discapacidad()
+			{
+				$this->db->select('discapacidad,COUNT(*) as total');
+				$this->db->group_by('discapacidad');
+				$this->db->order_by('discapacidad');
+ 			  $query=$this->db->get('usuario');
+ 			  return $query->result();
+
+			}
+
 } ?>
