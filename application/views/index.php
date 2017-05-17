@@ -98,19 +98,19 @@
                               <p><i class="fa fa-square" style="color:blue;"></i>Menores</p>
                             </td>
 
-                            <td> <?php echo is_object($grafica2['menores']) ? (($grafica2['menores'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
+                            <td> <?php echo !is_object($grafica2['menores']) ? (($grafica2['menores'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
                           </tr>
                           <tr>
                             <td>
                               <p><i class="fa fa-square" style="color:orange;"></i>Adultos</p>
                             </td>
-                            <td><?php echo is_object($grafica2['adultos']) ? (($grafica2['adultos'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
+                            <td><?php echo !is_object($grafica2['adultos']) ? (($grafica2['adultos'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square" style="color:#47D50F;"></i>Mayores</p>
+                              <p><i class="fa fa-square" style="color:#47D50F;"></i>Tercera edad</p>
                             </td>
-                            <td><?php echo is_object($grafica2['mayores']) ? (($grafica2['mayores'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
+                            <td><?php echo !is_object($grafica2['mayores']) ? (($grafica2['mayores'])/($grafica2['adultos']+$grafica2['menores']+$grafica2['mayores'])*100) : 0; ?>%</td>
                           </tr>
                         </table>
                       </td>

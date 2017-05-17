@@ -690,13 +690,19 @@ if (typeof NProgress != 'undefined') {
       var menores = eval(grafica2['menores']);
       var mayores=eval(grafica2['mayores']);
       var adultos=eval(grafica2['adultos']);
+      console.log("menores");
+      console.log(menores);
+      console.log("mayores");
+      console.log(mayores);
+      console.log("adultos");
+      console.log(adultos);
     var chart_doughnut_settings = {
       type: 'doughnut',
       data: {
         labels: [
           "Menores de edad",
           "Adultos",
-          "Mayores de edad"
+          "Tercera de edad"
         ],
         datasets: [{
           data: [menores,adultos,mayores],

@@ -18,7 +18,7 @@ class Welcome extends CI_Controller {
 		$etnia = $this->Usuario->obtener_por_etnia();
 		$discapacidad = $this->Usuario->obtener_por_discapacidad();
 		//$comuna11 = $this->Usuario->obtener_por_comuna11();
-		$grafica2 = array('menores' => (float)$menores,'adultos'=> (float)$total[0]->total-(float)$menores-(float)$mayores,'mayores'=>(float)$mayores);
+		$grafica2 = array('menores' => (int)$menores[0]->total,'adultos'=> (float)$total[0]->total-(int)$menores[0]->total-(int)$mayores[0]->total,'mayores'=>(int)$mayores[0]->total);
 		$data = array('usuarios' => $total,
 									'hombres' => is_object($hombres_mujeres[1]) ? $hombres_mujeres[1]->total : '0',
 									'mujeres' => is_object($hombres_mujeres[0]) ? $hombres_mujeres[0]->total : '0',
